@@ -6,15 +6,15 @@
 		selectedWifiList,
 		addToSelectedList,
 		exportToJSON
-	} from "$lib/store/wifiList";
-	import { isListEdit } from "$lib/store/globalState";
-	import { flip } from "svelte/animate";
-	import Heading from "$lib/component/Typography/Heading.svelte";
-	import WifiOverview from "$lib/component/WifiOverview.svelte";
-	import QRCodePreviewModal from "$lib/component/Modal/QRCodePreviewModal.svelte";
-	import QRCodeDeleteModal from "$lib/component/Modal/QRCodeDeleteModal.svelte";
-	import { fade } from "svelte/transition";
-	import { onDestroy } from "svelte";
+	} from '$lib/stores/wifiList';
+	import { isListEdit } from '$lib/stores/globalState';
+	import { flip } from 'svelte/animate';
+	import Heading from '$lib/components/Typography/Heading.svelte';
+	import WifiOverview from '$lib/components/WifiOverview.svelte';
+	import QRCodePreviewModal from '$lib/components/Modal/QRCodePreviewModal.svelte';
+	import QRCodeDeleteModal from '$lib/components/Modal/QRCodeDeleteModal.svelte';
+	import { fade } from 'svelte/transition';
+	import { onDestroy } from 'svelte';
 	let selectedWifi: Wifi;
 	let isQRPreviewShow = false;
 	let isQRDeleteShow = false;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import Heading from "$lib/component/Typography/Heading.svelte";
+	import { page } from '$app/stores';
+	import Heading from '$lib/components/Typography/Heading.svelte';
 </script>
 
 <Heading>

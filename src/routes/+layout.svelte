@@ -1,20 +1,15 @@
 <script lang="ts">
-	import "../styles.css";
-	import { page } from "$app/stores";
-	import { onMount } from "svelte";
-	import {
-		wifiList,
-		selectedWifiList,
-		deleteAllFromSelectedList,
-		exportToJSON
-	} from "$lib/store/wifiList";
-	import { isListEdit, headerText, isHeaderIntersect } from "$lib/store/globalState";
-	import { fade } from "svelte/transition";
-	import { quartInOut } from "svelte/easing";
-	import QRCodeDeleteModal from "$lib/component/Modal/QRCodeDeleteModal.svelte";
+	import '../styles.css';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { wifiList, selectedWifiList, deleteAllFromSelectedList, exportToJSON } from '$lib/stores/wifiList';
+	import { isListEdit, headerText, isHeaderIntersect } from '$lib/stores/globalState';
+	import { fade } from 'svelte/transition';
+	import { quartInOut } from 'svelte/easing';
+	import QRCodeDeleteModal from '$lib/components/Modal/QRCodeDeleteModal.svelte';
 	let isDeleteAllFromSelectedShow = false;
 	onMount(() => {
-		const savedFromLocal = localStorage.getItem("wifiList");
+		const savedFromLocal = localStorage.getItem('wifiList');
 		if (savedFromLocal) {
 			$wifiList = JSON.parse(savedFromLocal);
 		}
@@ -23,28 +18,25 @@
 
 <svelte:head>
 	<title>Wifi2QR</title>
-	<meta
-		name="description"
-		content="Create a QR code with your wifi information to share with others."
-	/>
+	<meta name="description" content="Create a QR code with your wifi information to share with others." />
 </svelte:head>
 
 <header
 	id="header"
 	class={`fixed w-full ${
-		$isHeaderIntersect ? "bg-zinc-900/50 border-zinc-800/50" : "bg-black border-black"
+		$isHeaderIntersect ? 'bg-zinc-900/50 border-zinc-800/50' : 'bg-black border-black'
 	} px-4 py-2 border-b z-10 backdrop-blur-md`}
 >
 	<div class="flex items-center justify-between">
 		<p class="text-2xl font-bold" class:invisible={!$isHeaderIntersect}>
 			{$headerText}
 		</p>
-		{#if $page.url.pathname === "/saved"}
+		{#if $page.url.pathname === '/saved'}
 			<button
 				disabled={$wifiList.length == 0}
 				on:click={() => ($isListEdit = !$isListEdit)}
 				class="text-blue-400 font-bold hover:opacity-80 active:opacity-90 transition-all disabled:opacity-75 disabled:cursor-not-allowed"
-				>{$isListEdit ? "Done" : "Edit"}</button
+				>{$isListEdit ? 'Done' : 'Edit'}</button
 			>
 		{/if}
 	</div>
@@ -93,16 +85,11 @@
 	>
 		<a
 			class="flex flex-col sm:flex-row sm:justify-center items-center gap-[0.05rem] sm:gap-2 w-full"
-			class:text-blue-500={$page.url.pathname === "/"}
+			class:text-blue-500={$page.url.pathname === '/'}
 			href="/"
 		>
-			{#if $page.url.pathname === "/"}
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="currentColor"
-					class="w-6 h-6"
-				>
+			{#if $page.url.pathname === '/'}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
 					<path
 						fill-rule="evenodd"
 						d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
@@ -118,27 +105,18 @@
 					stroke="currentColor"
 					class="w-6 h-6"
 				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-					/>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 				</svg>
 			{/if}
 			<span>Create</span>
 		</a>
 		<a
 			class="flex flex-col sm:flex-row sm:justify-center items-center gap-[0.05rem] sm:gap-2 w-full"
-			class:text-blue-500={$page.url.pathname === "/saved"}
+			class:text-blue-500={$page.url.pathname === '/saved'}
 			href="/saved"
 		>
-			{#if $page.url.pathname === "/saved"}
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="currentColor"
-					class="w-6 h-6"
-				>
+			{#if $page.url.pathname === '/saved'}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
 					<path
 						fill-rule="evenodd"
 						d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
@@ -165,7 +143,7 @@
 		>
 		<a
 			class="flex flex-col sm:flex-row sm:justify-center items-center gap-[0.05rem] sm:gap-2 w-full"
-			class:text-blue-500={$page.url.pathname === "/search"}
+			class:text-blue-500={$page.url.pathname === '/search'}
 			href="/search"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -186,4 +164,3 @@
 </div>
 
 <div id="modal-container" />
-
