@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>Wifi2QR</title>
+	<title>Wifi - Qrcode</title>
 	<meta name="description" content="Create a QR code with your wifi information to share with others." />
 </svelte:head>
 
