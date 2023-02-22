@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "../app.css";
+	import "../styles.css";
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
 	import {
