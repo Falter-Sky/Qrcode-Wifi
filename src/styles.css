@@ -1,3 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: "IBM Plex Sans";
+		font-weight: 400;
+		src: url("/fonts/IBMPlexSans-Regular.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "IBM Plex Sans";
+		font-weight: 700;
+		src: url("/fonts/IBMPlexSans-Bold.woff") format("woff");
+	}
+}
+
 body {
 	-webkit-tap-highlight-color: transparent;
 }
