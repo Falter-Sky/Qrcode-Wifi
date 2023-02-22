@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { deleteWifi, wifiList, type Wifi } from "$lib/store/wifiList";
-	import { fade } from "svelte/transition";
-	import { flip } from "svelte/animate";
-	import Heading from "$lib/component/Typography/Heading.svelte";
-	import WifiOverview from "$lib/component/WifiOverview.svelte";
-	import QRCodePreviewModal from "$lib/component/Modal/QRCodePreviewModal.svelte";
-	import QRCodeDeleteModal from "$lib/component/Modal/QRCodeDeleteModal.svelte";
-	import SearchInput from "$lib/component/Input/SearchInput.svelte";
-	let search = "";
-	$: regex = new RegExp(`(${search})+`, "i");
+	import { deleteWifi, wifiList, type Wifi } from '$lib/stores/wifiList';
+	import { fade } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import Heading from '$lib/components/Typography/Heading.svelte';
+	import WifiOverview from '$lib/components/WifiOverview.svelte';
+	import QRCodePreviewModal from '$lib/components/Modal/QRCodePreviewModal.svelte';
+	import QRCodeDeleteModal from '$lib/components/Modal/QRCodeDeleteModal.svelte';
+	import SearchInput from '$lib/components/Input/SearchInput.svelte';
+	let search = '';
+	$: regex = new RegExp(`(${search})+`, 'i');
 	$: searchResults = $wifiList.filter((w) => regex.test(w.ssid));
 	const clearSearch = () => {
-		search = "";
+		search = '';
 	};
 	let selectedWifi: Wifi;
 	let isQRPreviewShow = false;
@@ -42,10 +42,7 @@
 		{/each}
 	</div>
 {:else}
-	<div
-		in:fade|local={{ delay: 500 }}
-		class="text-zinc-700 flex flex-col items-center gap-2 pt-28 select-none"
-	>
+	<div in:fade|local={{ delay: 500 }} class="text-zinc-700 flex flex-col items-center gap-2 pt-28 select-none">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -87,4 +84,3 @@
 		}}
 	/>
 {/if}
-
